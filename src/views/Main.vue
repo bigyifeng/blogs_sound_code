@@ -7,17 +7,15 @@
           <div class="title">易风 YiFeng</div>
           <ul class="nav">
             <li v-for="item in navList"
-                :key="item.href"
-            >
-              <a class="menu-text"
-                 :href="item.herf"
-              >{{ item.text }}</a>
+                :key="item.href">
+              <span class="menu-text"
+                    @click="$router.push(item.route)">
+                {{ item.text }}</span>
             </li>
           </ul>
           <div class="right">
             <a href="https://github.com/bigyifeng/bigyifeng.github.io"
-               class="blog-github iconfont github"
-            >
+               class="blog-github iconfont github">
               GitHub
             </a>
           </div>
@@ -29,10 +27,24 @@
 </template>
 
 <script>
+import { reactive, toRefs } from "vue"
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
+  name: "Main",
+  setup () {
+    const data = reactive({
+      navList: [
+        { text: "个人简历（建设中）", route: "./src/404.html" },
+        { text: "收藏（建设中）", route: "./src/404.html" },
+        { text: "学习打卡", route: "/study" },
+        { text: "进入后台（建设中）", route: "./src/404.html" },
+        { text: "联系方式（建设中）", route: "./src/404.html" },
+      ],
+    })
+
+
+    return {
+      ...data
+    }
   }
 }
 </script>
@@ -59,8 +71,6 @@ export default {
       display: flex;
       justify-content: space-around;
       flex: 1;
-      li {
-      }
       .menu-text {
         display: block;
         padding: 0;
@@ -69,10 +79,12 @@ export default {
         font-weight: bold;
         line-height: 72px;
         opacity: 0.95;
-        -webkit-transition: color 0.3s linear;
         position: relative;
-        z-index: 2;
         color: #2b2e2e;
+        cursor: pointer;
+      }
+      .menu-text:hover {
+        color: #0555da;
       }
     }
   }

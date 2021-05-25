@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     "plugin:vue/essential",
-    "plugin:vue/strongly-recommended",
     "eslint:recommended",
   ],
   rules: {
@@ -57,7 +56,7 @@ module.exports = {
     // 允许在 vue html 模板中使用 <
     // eg: <span>{{ value < 1 }}</span>
     "vue/no-parsing-error": ["error", { "invalid-first-character-of-tag-name": false }],
-    "max-len": ["error", { code: 100, ignoreUrls: true }]
+    "max-len": ["error", { code: 200, ignoreUrls: true }]
   },
   parserOptions: {
     parser: "babel-eslint"
